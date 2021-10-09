@@ -20,14 +20,18 @@ int main()
 {
 
 
-    int my_size = 10000; //100000
+    //int my_size = 10000; //100000
     int R = 5;
     float dt = 0.001;
-    float k = 1;
+    float k = 2;
+    float t0 = 1;
+
+    int my_size = int(t0/dt)
 
     std::ofstream file;
     file.open("C:\\Users\\1\\C++\\Model\\2\\simple_task_c++\\file.txt");
     file << "k = " << k << "\n";
+    file << "k = " << dt << "\n";
 
     float a = R;
     float b = 0.0;
