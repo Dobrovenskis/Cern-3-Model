@@ -21,6 +21,10 @@ for line in f:
     if dtif:
         dt = float(dtif.group())
 
+    t0if = (re.search(r'(?<=t0=\s)[\d\.\de\-]+', line))
+    if t0if:
+        t0 = float(t0if.group())
+
 #print(x_list)
 #print(v_list)
 #print(k)
@@ -48,8 +52,8 @@ print("E_err = E_end/E_0 = ",Energy[-1] / Energy[0])
 
 fig, gr = plt.subplots(1,4)
 gr[0].plot(Mat.T[0], Mat.T[1])
-gr[0].set_xlabel('x')
-gr[0].set_ylabel('v')
+gr[0].set_xlabel('?????a???')
+gr[0].set_ylabel('?????b???')
 #gr[0].xlabel("a")
 #gr[0].ylabel("b")
 gr[1].plot(Energy)
@@ -62,7 +66,11 @@ gr[2].set_ylabel('x')
 
 gr[3].plot(V_list)
 gr[3].set_xlabel('step')
-gr[3].set_ylabel('V')
+gr[3].set_ylabel('y')
 plt.show()
 
-
+delta_E = Energy[-1] - Energy[0]
+f_dE_dt = open('dE_dt.txt', 'a')
+#print(delta_E, " ", dt, " ")
+print("delta_E= ", delta_E, " ", "dt= ", dt, " ", "t0= ", t0, file=f_dE_dt)
+f_dE_dt.close()
